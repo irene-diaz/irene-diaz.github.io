@@ -85,3 +85,94 @@ if (footerYear) {
         `© ${new Date().getFullYear()} [TU NOMBRE]`;
 
 }
+
+/* ========================================
+   CAMBIO DE IDIOMA
+======================================== */
+
+const languageToggle = document.querySelector("#language-toggle");
+
+if (languageToggle) {
+
+    languageToggle.addEventListener("click", () => {
+
+        const select = document.querySelector(
+            ".gtranslate_wrapper select"
+        );
+
+        if (!select) {
+            console.log("No se encontró el selector de GTranslate.");
+            return;
+        }
+
+        const currentLanguage = select.value;
+
+        const newLanguage =
+            currentLanguage === "es|en"
+                ? "es|es"
+                : "es|en";
+
+        console.log("Cambiando de", currentLanguage, "a", newLanguage);
+
+        select.value = newLanguage;
+
+        select.dispatchEvent(
+            new Event("change", {
+                bubbles: true
+            })
+        );
+
+        languageToggle.textContent =
+            newLanguage === "es|en"
+                ? "🇪🇸 ES"
+                : "🇬🇧 EN";
+
+    });
+
+}
+
+/* ========================================
+   CAMBIO DE TEMA
+======================================== */
+
+const themeToggle = document.querySelector("#theme-toggle");
+
+function getDefaultTheme() {
+    const hour = new Date().getHours();
+
+    // Claro: 07:00 - 18:59
+    // Oscuro: 19:00 - 06:59
+    return hour >= 7 && hour < 19 ? "light" : "dark";
+}
+
+function applyTheme(theme) {
+    document.documentElement.classList.toggle(
+        "light-theme",
+        theme === "light"
+    );
+
+    if (themeToggle) {
+        themeToggle.textContent =
+            theme === "light" ? "🌙" : "☀️";
+    }
+}
+
+const savedTheme = localStorage.getItem("theme");
+const currentTheme = savedTheme || getDefaultTheme();
+
+applyTheme(currentTheme);
+
+if (themeToggle) {
+    themeToggle.addEventListener("click", () => {
+
+        const newTheme =
+            document.documentElement.classList.contains("light-theme")
+                ? "dark"
+                : "light";
+
+        applyTheme(newTheme);
+
+        localStorage.setItem("theme", newTheme);
+    });
+}
+

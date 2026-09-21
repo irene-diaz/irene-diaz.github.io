@@ -82,7 +82,7 @@ const footerYear = document.querySelector(".footer p");
 if (footerYear) {
 
     footerYear.textContent =
-        `© ${new Date().getFullYear()} [TU NOMBRE]`;
+        `© ${new Date().getFullYear()} Irene Díaz`;
 
 }
 

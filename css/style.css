@@ -340,6 +340,14 @@ img {
     margin-bottom: 40px;
 }
 
+.hero-description strong {
+        color: var(--accent-light);
+}
+
+.hero-buttons .btn i {
+    margin-left: 8px;
+}
+
 
 /* ========================================
    FOTO HERO

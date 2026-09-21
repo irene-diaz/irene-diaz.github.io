@@ -124,8 +124,8 @@ if (languageToggle) {
 
         languageToggle.textContent =
             newLanguage === "es|en"
-                ? "ES"
-                : "EN";
+                ? "EN"
+                : "ES";
 
         languageToggle.setAttribute(
             "data-tooltip",
@@ -156,8 +156,8 @@ if (themeToggle) {
             document.documentElement.classList.contains("light-theme");
 
         themeToggle.innerHTML = isLight
-            ? '<i class="fa-regular fa-moon"></i>'
-            : '<i class="fa-regular fa-sun"></i>';
+            ? '<i class="fa-solid fa-sun"></i>'
+            : '<i class="fa-solid fa-moon"></i>';
 
         themeToggle.setAttribute(
             "data-tooltip",

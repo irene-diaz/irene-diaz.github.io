@@ -124,8 +124,20 @@ if (languageToggle) {
 
         languageToggle.textContent =
             newLanguage === "es|en"
-                ? "🇪🇸 ES"
-                : "🇬🇧 EN";
+                ? "ES"
+                : "EN";
+
+        languageToggle.textContent =
+            newLanguage === "es|en"
+                ? "ES"
+                : "EN";
+
+        languageToggle.setAttribute(
+            "data-tooltip",
+            newLanguage === "es|en"
+                ? "Cambiar a español"
+                : "Cambiar a inglés"
+        );
 
     });
 
@@ -137,42 +149,32 @@ if (languageToggle) {
 
 const themeToggle = document.querySelector("#theme-toggle");
 
-function getDefaultTheme() {
-    const hour = new Date().getHours();
-
-    // Claro: 07:00 - 18:59
-    // Oscuro: 19:00 - 06:59
-    return hour >= 7 && hour < 19 ? "light" : "dark";
-}
-
-function applyTheme(theme) {
-    document.documentElement.classList.toggle(
-        "light-theme",
-        theme === "light"
-    );
-
-    if (themeToggle) {
-        themeToggle.textContent =
-            theme === "light" ? "🌙" : "☀️";
-    }
-}
-
-const savedTheme = localStorage.getItem("theme");
-const currentTheme = savedTheme || getDefaultTheme();
-
-applyTheme(currentTheme);
-
 if (themeToggle) {
+
     themeToggle.addEventListener("click", () => {
 
-        const newTheme =
-            document.documentElement.classList.contains("light-theme")
-                ? "dark"
-                : "light";
+        themeToggle.classList.add("changing");
 
-        applyTheme(newTheme);
+        document.documentElement.classList.toggle("light-theme");
 
-        localStorage.setItem("theme", newTheme);
+        const isLight =
+            document.documentElement.classList.contains("light-theme");
+
+        themeToggle.innerHTML = isLight
+            ? '<i class="fa-regular fa-moon"></i>'
+            : '<i class="fa-regular fa-sun"></i>';
+
+        themeToggle.setAttribute(
+            "data-tooltip",
+            isLight
+                ? "Cambiar a modo oscuro"
+                : "Cambiar a modo claro"
+        );
+
+        setTimeout(() => {
+            themeToggle.classList.remove("changing");
+        }, 350);
+
     });
-}
 
+}

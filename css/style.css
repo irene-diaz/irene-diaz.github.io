@@ -2579,35 +2579,101 @@ img {
     --border: rgba(0, 0, 0, 0.1);
 }
 
-/* Botón del tema */
+/* ========================================
+   BOTÓN DEL TEMA
+======================================== */
 
 .theme-toggle {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     background: transparent;
     border: 1px solid var(--border);
+
     color: var(--text-primary);
-    font-family: inherit;
-    font-size: 1rem;
-    padding: 10px 12px;
+
     cursor: pointer;
-    transition: all 0.3s ease;
+
+    transition:
+        color 0.3s ease,
+        border-color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.theme-toggle i {
+    font-size: 1rem;
+
+    transition:
+        transform 0.35s ease,
+        opacity 0.25s ease;
 }
 
 .theme-toggle:hover {
+    color: var(--accent);
     border-color: var(--accent);
     transform: translateY(-2px);
 }
 
-header,
-section,
-footer,
-.project,
-.mini-project,
-.daw-project-featured,
-.daw-mini-project,
-.skill,
-.education-item {
+.theme-toggle:active {
+    transform: scale(0.92);
+}
+
+.theme-toggle.changing i {
+    transform: rotate(180deg) scale(0.8);
+    opacity: 0.4;
+}
+
+/* ========================================
+   TOOLTIPS DE LOS BOTONES
+======================================== */
+
+.language-toggle,
+.theme-toggle {
+    position: relative;
+}
+
+/* Texto del tooltip */
+.language-toggle::after,
+.theme-toggle::after {
+    content: attr(data-tooltip);
+
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%) translateY(-4px);
+
+    padding: 6px 10px;
+
+    background: var(--bg-card);
+    color: var(--text-primary);
+
+    border: 1px solid var(--border);
+
+    font-size: 0.75rem;
+    font-weight: 400;
+    white-space: nowrap;
+
+    opacity: 0;
+    visibility: hidden;
+
+    pointer-events: none;
+
     transition:
-        background-color 0.4s ease,
-        border-color 0.4s ease,
-        color 0.4s ease;
+        opacity 0.2s ease,
+        transform 0.2s ease,
+        visibility 0.2s ease;
+
+    z-index: 1000;
+}
+
+/* Mostrar tooltip al hacer hover */
+.language-toggle:hover::after,
+.theme-toggle:hover::after {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
 }

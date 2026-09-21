@@ -9,6 +9,8 @@
 
     <title>Irene Diaz | Desarrollador Web</title>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -64,12 +66,14 @@
 
             </ul>
 
-            <button id="language-toggle" class="language-toggle" type="button" translate="no">
-                🇬🇧 EN
+            <button id="language-toggle" class="language-toggle" type="button" translate="no"
+                data-tooltip="Cambiar a inglés">
+                EN
             </button>
 
-            <button id="theme-toggle" class="theme-toggle" aria-label="Cambiar tema" translate="no">
-                ☀️
+            <button id="theme-toggle" class="theme-toggle" aria-label="Cambiar tema" type="button"
+                data-tooltip="Cambiar a modo oscuro">
+                <i class="fa-regular fa-sun"></i>
             </button>
 
             <div class="gtranslate_wrapper"></div>
@@ -1393,7 +1397,6 @@
     </script>
 
     <script src="https://cdn.gtranslate.net/widgets/latest/dropdown.js" defer></script>
-
 </body>
 
 </html>

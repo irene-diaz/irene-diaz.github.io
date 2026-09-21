@@ -127,11 +127,6 @@ if (languageToggle) {
                 ? "ES"
                 : "EN";
 
-        languageToggle.textContent =
-            newLanguage === "es|en"
-                ? "ES"
-                : "EN";
-
         languageToggle.setAttribute(
             "data-tooltip",
             newLanguage === "es|en"

@@ -21,6 +21,25 @@
     --transition: 0.3s ease;
 }
 
+/* ========================================
+   MODO CLARO
+======================================== */
+
+:root.light-theme {
+    --bg-primary: #f5f5f7;
+    --bg-secondary: #ffffff;
+    --bg-card: #ffffff;
+
+    --text-primary: #18181b;
+    --text-secondary: #52525b;
+    --text-muted: #71717a;
+
+    --accent: #7c3aed;
+    --accent-light: #6d28d9;
+
+    --border: rgba(0, 0, 0, 0.1);
+}
+
 
 /* ========================================
    RESET
@@ -2352,10 +2371,6 @@ img {
 
 @media (max-width: 768px) {
 
-    .nav-links {
-        display: none;
-    }
-
     .section {
         padding: 90px 0;
     }
@@ -2468,7 +2483,6 @@ img {
     transform: translateY(-7px) rotate(-45deg);
 }
 
-
 /* ========================================
    MENÚ MÓVIL RESPONSIVE
 ======================================== */
@@ -2494,7 +2508,7 @@ img {
 
         gap: 20px;
 
-        background: rgba(17, 17, 26, 0.98);
+        background: var(--bg-secondary);
 
         border: 1px solid var(--border);
 
@@ -2558,25 +2572,6 @@ img {
 
 .skill:nth-child(4) {
     transition-delay: 0.3s;
-}
-
-/* ========================================
-   MODO CLARO
-======================================== */
-
-:root.light-theme {
-    --bg-primary: #f5f5f7;
-    --bg-secondary: #ffffff;
-    --bg-card: #ffffff;
-
-    --text-primary: #18181b;
-    --text-secondary: #52525b;
-    --text-muted: #71717a;
-
-    --accent: #7c3aed;
-    --accent-light: #6d28d9;
-
-    --border: rgba(0, 0, 0, 0.1);
 }
 
 /* ========================================

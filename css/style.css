@@ -115,6 +115,33 @@ img {
     margin-bottom: 50px;
 }
 
+/* ========================================
+   DIVISOR DE SECCIÓN
+   ======================================== */
+.section-divider {
+    display: flex;
+    align-items: center;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 20px;
+}
+
+.section-divider::before,
+.section-divider::after {
+    content: "";
+    height: 1px;
+    flex: 1;
+    background: #444;
+}
+
+.section-divider span {
+    color: #888;
+    font-family: monospace;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+}
+
 
 /* ========================================
    HEADER

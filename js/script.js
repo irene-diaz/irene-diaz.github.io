@@ -74,6 +74,47 @@ animatedElements.forEach((element) => {
 
 
 /* ========================================
+   FALLBACK DE IMÁGENES DE PROYECTO
+   ======================================== */
+
+const projectImages = document.querySelectorAll("[data-project-image]");
+
+projectImages.forEach((image) => {
+
+    const placeholder = image.closest(
+        ".project-placeholder, .daw-project-placeholder"
+    );
+
+    if (!placeholder) {
+        return;
+    }
+
+    const showImage = () => {
+        image.hidden = false;
+        placeholder.classList.add("has-image");
+    };
+
+    const hideImage = () => {
+        image.hidden = true;
+        placeholder.classList.remove("has-image");
+    };
+
+    image.addEventListener("load", showImage);
+    image.addEventListener("error", hideImage);
+
+    // La imagen puede haberse cargado antes de ejecutar este script.
+    if (image.complete) {
+        if (image.naturalWidth > 0) {
+            showImage();
+        } else {
+            hideImage();
+        }
+    }
+
+});
+
+
+/* ========================================
    AÑO AUTOMÁTICO DEL FOOTER
 ======================================== */
 

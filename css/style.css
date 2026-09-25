@@ -647,6 +647,7 @@ img {
 .project {
     display: grid;
     grid-template-columns: 1.15fr 1fr;
+    min-width: 0;
     gap: 75px;
     align-items: center;
 }
@@ -670,7 +671,12 @@ img {
 
 .project-visual {
     position: relative;
-    min-height: 420px;
+    min-height: 0;
+    width: 100%;
+    min-width: 0;
+    max-width: 620px;
+    aspect-ratio: var(--image-aspect-ratio, 1 / 1);
+    justify-self: center;
     overflow: hidden;
 
     border: 1px solid var(--border);
@@ -783,6 +789,63 @@ img {
 
     text-shadow:
         0 0 25px rgba(167, 139, 250, 0.35);
+}
+
+
+/* =========================================
+   IMÁGENES DE PROYECTO Y FALLBACK
+   ========================================= */
+
+.project-placeholder > a,
+.daw-project-placeholder > a {
+    position: absolute;
+    inset: 0;
+
+    display: block;
+
+    overflow: hidden;
+
+    text-decoration: none;
+}
+
+.project-image {
+    position: absolute;
+    inset: 0;
+
+    display: block;
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    opacity: 0;
+
+    transition: opacity 0.35s ease;
+}
+
+.project-placeholder.has-image .project-image,
+.daw-project-placeholder.has-image .project-image {
+    opacity: 1;
+}
+
+.project-placeholder__fallback {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition:
+        opacity 0.35s ease,
+        visibility 0.35s ease;
+}
+
+.project-placeholder.has-image .project-placeholder__fallback,
+.daw-project-placeholder.has-image .project-placeholder__fallback {
+    visibility: hidden;
+    opacity: 0;
 }
 
 
@@ -1223,7 +1286,7 @@ img {
 
 
     .project-visual {
-        min-height: 350px;
+        min-height: 0;
     }
 
     .project-info {
@@ -1287,7 +1350,7 @@ img {
 
 
     .project-visual {
-        min-height: 260px;
+        min-height: 0;
 
         border-radius: 15px;
     }
@@ -1392,7 +1455,7 @@ img {
 @media (max-width: 400px) {
 
     .project-visual {
-        min-height: 220px;
+        min-height: 0;
     }
 
     .project-placeholder span {
@@ -1462,6 +1525,7 @@ img {
 .daw-project-featured {
     display: grid;
     grid-template-columns: 1.15fr 1fr;
+    min-width: 0;
     gap: 75px;
     align-items: center;
 }
@@ -1473,7 +1537,12 @@ img {
 
 .daw-project-visual {
     position: relative;
-    min-height: 480px;
+    min-height: 0;
+    width: 100%;
+    min-width: 0;
+    max-width: 560px;
+    aspect-ratio: var(--image-aspect-ratio, 756 / 865);
+    justify-self: center;
     overflow: hidden;
 
     border: 1px solid var(--border);
@@ -1581,7 +1650,6 @@ img {
 
 .daw-project-placeholder {
     position: absolute;
-
     inset: 0;
 
     z-index: 2;
@@ -1827,7 +1895,7 @@ img {
     }
 
     .daw-project-visual {
-        min-height: 380px;
+        min-height: 0;
     }
 
     .daw-project-info {
@@ -1878,7 +1946,7 @@ img {
     }
 
     .daw-project-visual {
-        min-height: 280px;
+        min-height: 0;
 
         border-radius: 15px;
     }
@@ -1940,7 +2008,7 @@ img {
 @media (max-width: 400px) {
 
     .daw-project-visual {
-        min-height: 230px;
+        min-height: 0;
     }
 
     .daw-project-placeholder span {
